@@ -1,16 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Formulaire de commande </title>
+    <title>Formulaire de commande</title>
 </head>
 <body>
-<form action="/commande" method="post">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+<h1>Formulaire de commande</h1>
+<form action="/commande" method="POST">
+    <div>
+        <label for="nomClient">Nom :</label>
+        <input type="text" id="nomClient" name="nomClient" required>
+    </div>
+    <div>
+        <label for="numeroTelephone">Numéro de téléphone :</label>
+        <input type="text" id="numeroTelephone" name="numeroTelephone" required>
+    </div>
+    <div>
+        <label for="jourRecuperation">Jour de récupération :</label>
+        <input type="date" id="jourRecuperation" name="jourRecuperation" required>
+    </div>
+    <div>
+        <label for="fruits">Fruits :</label>
+        <select id="fruits" name="fruits" multiple required>
+            <!-- Boucle sur les fruits disponibles dans le modèle -->
+            <option value="1">Pomme</option>
+            <option value="2">Banane</option>
+            <option value="3">Orange</option>
+            <!-- ... -->
+        </select>
+    </div>
+    <div>
+        <label for="legumes">Légumes :</label>
+        <select id="legumes" name="legumes" multiple required>
+            <!-- Boucle sur les légumes disponibles dans le modèle -->
+            <option value="1">Carotte</option>
+            <option value="2">Tomate</option>
+            <option value="3">Salade</option>
+            <!-- ... -->
+        </select>
+    </div>
+    <div>
+        <button type="submit">Enregistrer la commande</button>
+    </div>
 </form>
 </body>
 </html>
