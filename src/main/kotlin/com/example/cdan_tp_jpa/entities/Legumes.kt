@@ -9,5 +9,8 @@ data class Legumes(
     val id: Long = 0,
 
     @Column(nullable = false)
-    val nom: String = ""
+    val nom: String = "",
+
+    @Column(nullable = false)
+    var actif : Boolean = true,
 )

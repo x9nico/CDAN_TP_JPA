@@ -40,7 +40,7 @@ class CommandeController(@Autowired private val commandeRepository: CommandeRepo
         return "admin-page"
     }
 
-    @PostMapping("/admin/activer/{fruitId}")
+    @PostMapping("/admin/activerFruit/{fruitId}")
     fun activerFruit(@PathVariable("fruitId") fruitId: Long): String {
         val fruit = fruitRepository.findById(fruitId)
         fruit.ifPresent {
@@ -50,7 +50,7 @@ class CommandeController(@Autowired private val commandeRepository: CommandeRepo
         return "redirect:/admin"
     }
 
-    @PostMapping("/admin/desactiver/{fruitId}")
+    @PostMapping("/admin/desactiverFruit/{fruitId}")
     fun desactiverFruit(@PathVariable("fruitId") fruitId: Long): String {
         val fruit = fruitRepository.findById(fruitId)
         fruit.ifPresent {
@@ -60,9 +60,29 @@ class CommandeController(@Autowired private val commandeRepository: CommandeRepo
         return "redirect:/admin"
     }
 
-    @PostMapping("/admin/supprimer/{fruitId}")
-    fun supprimerFruit(@PathVariable("fruitId") fruitId: Long): String {
-        fruitRepository.deleteById(fruitId)
+    @PostMapping("/admin/supprimerLegume/{legumeId}")
+    fun supprimerLegume(@PathVariable("legumeId") legumeId: Long): String {
+        legumeRepository.deleteById(legumeId)
+        return "redirect:/admin"
+    }
+
+    @PostMapping("/admin/activerLegume/{legumeId}")
+    fun activerLegume(@PathVariable("legumeId") legumeId: Long): String {
+        val legumes = legumeRepository.findById(legumeId)
+        legumes.ifPresent {
+            it.actif = true
+            legumeRepository.save(it)
+        }
+        return "redirect:/admin"
+    }
+
+    @PostMapping("/admin/desactiverLegume/{legumeId}")
+    fun desactiverLegume(@PathVariable("legumeId") legumeId: Long): String {
+        val legume = legumeRepository.findById(legumeId)
+        legume.ifPresent {
+            it.actif = false
+            legumeRepository.save(it)
+        }
         return "redirect:/admin"
     }
 }
