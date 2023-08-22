@@ -21,9 +21,12 @@ data class Commandes(
 
     // Autres attributs...
 
-    @ManyToMany
-    val fruits: Set<Fruits> = HashSet(),
+    //@ManyToMany(mappedBy = "commandes_fruits", fetch = FetchType.LAZY)
+    //val commandes_fruits: Set<Fruits> = HashSet(),
 
-    @ManyToMany
-    val legumes: Set<Legumes> = HashSet()
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "commandes_has_legumes", // Nom table intermédiaire (pivot)
+        joinColumns = [JoinColumn(name="commandes")], // ID de cette table dans la table intermédiaire
+        inverseJoinColumns = [JoinColumn( name="legumes")]) // ID de la table légume dans la table intermédiaire
+    val commandes_legumes: List<Legumes>? = ArrayList()
 )

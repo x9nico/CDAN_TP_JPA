@@ -15,27 +15,19 @@
         <input type="text" id="numeroTelephone" name="numeroTelephone" required>
     </div>
     <div>
-        <label for="jourRecuperation">Jour de récupération :</label>
-        <input type="date" id="jourRecuperation" name="jourRecuperation" required>
+        <label for="jour_recuperation">Jour de récupération :</label>
+        <input type="date" id="jour_recuperation" name="jour_recuperation" required>
     </div>
     <div>
-        <label for="fruits">Fruits :</label>
-        <select id="fruits" name="fruits" multiple required>
-            <!-- Boucle sur les fruits disponibles dans le modèle -->
-            <option value="1">Pomme</option>
-            <option value="2">Banane</option>
-            <option value="3">Orange</option>
-            <!-- ... -->
+        <label for="commandes_fruits">Fruits :</label>
+        <select id="commandes_fruits" name="commandes_fruits" multiple required>
+            <option th:each="fruits : ${fruits}" th:value="${fruits.id}" th:text="${fruits.nom}"></option>
         </select>
     </div>
     <div>
-        <label for="legumes">Légumes :</label>
-        <select id="legumes" name="legumes" multiple required>
-            <!-- Boucle sur les légumes disponibles dans le modèle -->
-            <option value="1">Carotte</option>
-            <option value="2">Tomate</option>
-            <option value="3">Salade</option>
-            <!-- ... -->
+        <label for="commandes_legumes">Légumes :</label>
+        <select id="commandes_legumes" name="commandes_legumes" multiple required>
+            <option th:each="legumes : ${legumes}" th:value="${legumes.id}" th:text="${legumes.nom}"></option>
         </select>
     </div>
     <div>
